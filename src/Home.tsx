@@ -1,3 +1,4 @@
+import Spinner from './components/Spinner';
 import { useGetProductQuery } from './slices/apiSlice';
 
 const Home = () => {
@@ -6,7 +7,6 @@ const Home = () => {
   return (
     <div>
       <h1>Home</h1>
-      <pre>{JSON.stringify(product, null, 2)}</pre>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import Product from './Product';
 import Navbar from './components/Navbar';
 import EditProduct from './EditProduct';
 import { useGetProductQuery } from './slices/apiSlice';
+import Spinner from './components/Spinner';
 
 function App() {
   const { isLoading, isSuccess, isError, error } = useGetProductQuery(6781);
@@ -12,7 +13,7 @@ function App() {
     <div className="bg-neutral-50 ">
       {isLoading && (
         <div className="flex items-center justify-center h-screen ">
-          Loading...
+          <Spinner />
         </div>
       )}
       {isSuccess && (
