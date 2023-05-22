@@ -1,15 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './store/store';
+import { apiSlice } from './slices/apiSlice';
 
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
+store.dispatch(apiSlice.endpoints.getConfiguration.initiate(1));
+
+render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
-

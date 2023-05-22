@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-styles ol li {
+  list-style: list;
+}
+.custom-styles ul li {
+  list-style: inside;
+}
