@@ -16,11 +16,12 @@ const Navbar = () => {
       <div className="max-w-screen-2xl flex flex-wrap  items-center justify-between mx-auto p-4 ">
         <Link
           to="/"
-          className="flex items-center "
+          className="flex items-center  bg-gray-200s"
         >
           <img
             src={configuration?.logo}
-            className="h-8 mr-3 filter  invert grayscale-[40%]"
+            className="h-8 mr-3 filter invert   brightness-0     "
+            
             alt="Logo"
           />
         </Link>
