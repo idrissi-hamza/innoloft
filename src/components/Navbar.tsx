@@ -10,7 +10,7 @@ const Navbar = () => {
   console.log(configuration);
   return (
     <nav
-      className="border-b bg-neutral-900"
+      className="border-b bg-neutral-900 sticky top-0 z-50"
       style={{ backgroundColor: `${configuration?.mainColor}` }}
     >
       <div className="max-w-screen-2xl flex flex-wrap  items-center justify-between mx-auto p-4 ">
