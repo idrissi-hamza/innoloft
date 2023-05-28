@@ -6,13 +6,16 @@ import { stateToHTML } from 'draft-js-export-html';
 
 import {
   useEditProductMutation,
+  useGetConfigurationQuery,
   useGetProductQuery,
 } from '../../slices/apiSlice';
 import { useEditorState } from '../../hooks/useEditorState';
 import { BsCheck } from 'react-icons/bs';
+import { appId } from '../../utils/utils';
 
 const EditMainSection = () => {
   const { data: product } = useGetProductQuery(6781);
+  const { data: configuration } = useGetConfigurationQuery(appId);
 
   const [productName, setProductName] = useState(product.name);
   const { editorState, setEditorState } = useEditorState(product.description);
@@ -37,17 +40,18 @@ const EditMainSection = () => {
     }
   };
 
-
   return (
     <div className="relative  p-2 flex flex-col  w-full">
-      
       <img
         src={product?.picture}
         className="w-full aspect-[2] mr-3"
         alt="Logo"
       />
       <div className="absolute top-0 left-0  flex rounded-md ">
-        <div className="bg-blue-600 p-2 rounded-tl-md rounded-br-md  flex items-center">
+        <div
+          className=" p-2 rounded-tl-md rounded-br-md  flex items-center text-white"
+          style={{ backgroundColor: `${configuration?.mainColor}` }}
+        >
           <IoRibbonOutline />
         </div>
         <div className="bg-white p-2 pl-3 rounded-br-md font-semibold">
