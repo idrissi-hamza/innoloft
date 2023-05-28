@@ -2,10 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsHouse } from 'react-icons/bs';
 import { RiArrowRightSLine } from 'react-icons/ri';
-import { useGetProductQuery } from '../slices/apiSlice';
+import {
+  useGetConfigurationQuery,
+  useGetProductQuery,
+} from '../slices/apiSlice';
+import { appId } from '../utils/utils';
 
 const Breadcrumb = () => {
   const { data: product } = useGetProductQuery(6781);
+  const { data: configuration } = useGetConfigurationQuery(appId);
 
   return (
     <div className="flex justify-between p-4">
@@ -32,7 +37,10 @@ const Breadcrumb = () => {
           </div>
         </li>
       </ol>{' '}
-      <button className="bg-blue-700  text-white px-2 py-1 rounded ml-auto flex flex-wrap  ">
+      <button
+        className="  text-white px-2 py-1 rounded ml-auto flex flex-wrap  "
+        style={{ backgroundColor: `${configuration?.mainColor}` }}
+      >
         <Link to="/Edit">Edit</Link>
       </button>
     </div>

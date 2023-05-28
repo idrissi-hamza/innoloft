@@ -1,10 +1,12 @@
 import React from 'react';
 import { IoRibbonOutline } from 'react-icons/io5';
 import createMarkup from '../../utils/createMarkup';
-import { useGetProductQuery } from '../../slices/apiSlice';
+import { useGetConfigurationQuery, useGetProductQuery } from '../../slices/apiSlice';
+import { appId } from '../../utils/utils';
 
 const MainSection = () => {
   const { data: product } = useGetProductQuery(6781);
+  const { data: configuration } = useGetConfigurationQuery(appId);
 
   return (
     <div className="relative ">
@@ -14,7 +16,10 @@ const MainSection = () => {
         alt="product "
       />
       <div className="absolute top-0 left-0  flex bg-white rounded-md">
-        <div className="bg-blue-600 p-2 rounded-tl-md rounded-br-md  flex items-center">
+        <div className=" p-2 rounded-tl-md rounded-br-md  flex items-center text-white"
+                style={{ backgroundColor: `${configuration?.mainColor}` }}
+
+        >
           <IoRibbonOutline />
         </div>
         <div className="bg-white p-2 pl-3 rounded-br-md font-semibold">

@@ -5,8 +5,11 @@ import { Link } from 'react-router-dom';
 import EditMainSection from './components/editProduct/EditMainSection';
 import EditVideoSection from './components/editProduct/EditVideoSection';
 import EditDetailsSection from './components/editProduct/EditDetailsSection';
+import { useGetConfigurationQuery } from './slices/apiSlice';
+import { appId } from './utils/utils';
 
 const EditProduct = () => {
+  const { data: configuration } = useGetConfigurationQuery(appId);
   return (
     <div className="max-w-screen-2xl mx-auto px-2 flex flex-col md:flex-row">
       <div className=" pt-6  md:w-1/5 hidden md:block ">
@@ -17,7 +20,10 @@ const EditProduct = () => {
           <h1 className="font-semibold text-neutral text-neutral-700">
             Offer Title
           </h1>
-          <button className="bg-blue-700  text-white px-2 py-1 rounded ml-auto flex flex-wrap  ">
+          <button
+            className=" text-white px-2 py-1 rounded ml-auto flex flex-wrap  "
+            style={{ backgroundColor: `${configuration?.mainColor}` }}
+          >
             <Link to="/product">View Offer</Link>
           </button>
         </div>
